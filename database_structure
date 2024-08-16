@@ -1,0 +1,25 @@
+CREATE DATABASE pharmacy_prescribed_medicine;
+USE pharmacy_prescribed_medicine;
+
+CREATE TABLE address (
+    address_id INT PRIMARY KEY AUTO_INCREMENT,
+    city VARCHAR(50),
+    county VARCHAR(50),
+    address_line_1 VARCHAR(50),
+    address_line_2 VARCHAR(50),
+    postcode VARCHAR(6)
+);
+
+CREATE TABLE patient (
+    patient_id INT PRIMARY KEY AUTO_INCREMENT,
+    address_id INT,
+    FOREIGN KEY (address_id)
+                     REFERENCES address (address_id)
+                     ON DELETE SET NULL,
+    NHS_number VARCHAR(10),
+    name VARCHAR(50),
+    phone VARCHAR(11),
+    email VARCHAR(50),
+    date_of_birth DATE,
+    note VARCHAR(250)
+);
